@@ -183,7 +183,7 @@ module JavaBuildpack
 
         def from_immutable_caches(uri)
           @immutable_cache_roots.each do |cache_root|
-            candidate = CachedFile.new cache_root, uri
+            candidate = CachedFile.new cache_root, uri, false
 
             if candidate.cached?
               @logger.debug { "#{uri} found in cache #{cache_root}" }

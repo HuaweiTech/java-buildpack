@@ -31,8 +31,9 @@ module JavaBuildpack
         #
         # @param [Pathname] cache_root the filesystem root for the file created and expected by this class
         # @param [String] uri a uri which uniquely identifies the file in the cache
-        def initialize(cache_root, uri)
-          FileUtils.mkdir_p cache_root
+        # @param [Boolean] mutable whether to mkdir cache_root. Defaults to +true+.
+        def initialize(cache_root, uri, mutable = true)
+          FileUtils.mkdir_p cache_root if mutable
 
           key            = URI.escape(uri, '/')
           @cached        = cache_root + "#{key}.cached"
